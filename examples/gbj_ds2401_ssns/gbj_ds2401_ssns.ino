@@ -15,7 +15,7 @@
 */
 #include "gbj_ds2401.h"
 
-#define SKETCH "GBJ_DS2401_SSNS 1.0.0"
+#define SKETCH "GBJ_DS2401_SSNS 1.0.1"
 
 const unsigned char PIN_DS2401 = 4; // Pin for one-wire bus
 
@@ -45,7 +45,7 @@ String textSerial(gbj_ds2401::Serial serial)
   for (byte i = 0; i < gbj_ds2401::SERIAL_LEN; i++)
   {
     if (i)
-      text += ".";
+      text += ":";
     sprintf(data, "%02X", serial[i]);
     text += data;
   }
@@ -93,7 +93,7 @@ void setup()
   {
     ds.cpyAddress(address);
     ds.cpySerial(serial);
-    Serial.println(String(++deviceNum) + ". Id: " + String(ds.getId(), HEX));
+    Serial.println(String(++deviceNum) + ". Id: " + String(ds.getId()));
     Serial.println("Address: " + String(textAddress(address)));
     Serial.println("Serial: " + String(textSerial(serial)));
     Serial.println("---");

@@ -53,6 +53,7 @@ gbj_ds2401::ResultCodes gbj_ds2401::present(const Address address)
         _rom.address.crc == address[Params::ADDRESS_LEN - 1])
     {
       isPresent = true;
+      break;
     }
   }
   reset_search();

@@ -15,7 +15,7 @@
 */
 #include "gbj_ds2401.h"
 
-#define SKETCH "GBJ_DS2401_PRESENT 1.0.0"
+#define SKETCH "GBJ_DS2401_PRESENT 1.1.0"
 
 const unsigned char PIN_DS2401 = 4; // Pin for one-wire bus
 
@@ -23,7 +23,6 @@ gbj_ds2401 ds = gbj_ds2401(PIN_DS2401);
 gbj_ds2401::Address address = {
   0x01, 0x95, 0x9E, 0x44, 0x16, 0x00, 0x00, 0x07 // Replace with current one
 };
-char buffer[50];
 
 String textAddress(gbj_ds2401::Address address)
 {
@@ -74,7 +73,10 @@ void setup()
   Serial.println(gbj_ds2401::VERSION);
   Serial.println("---");
   Serial.println("Address: " + String(textAddress(address)));
-  ds.present(address);
+  if (ds.isSuccess(ds.present(address)))
+  {
+    Serial.println("Id: " + String(ds.getId()));
+  }
   errorHandler();
 }
 
