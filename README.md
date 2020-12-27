@@ -32,7 +32,7 @@ Library for Dallas Semiconductor DS2401 one-wire silicone serial number (hereina
 #### Parameters for buffers
 
 - **gbj\_ds2401::ADDRESS\_LEN**  (`gbj_ds2401::Params::ADDRESS_LEN`): Number of bytes in the device's ROM.
-- **gbj\_ds2401::SERIAL\_LEN** (`gbj_ds2401::Params::SERIAL_LEN`): Number of bytes in the device's serial number.
+- **gbj\_ds2401::SERNUM\_LEN** (`gbj_ds2401::Params::SERNUM_LEN`): Number of bytes in the device's serial number.
 
 
 <a id="results"></a>
@@ -52,7 +52,7 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 ##### Custom data types
 
 - [gbj_ds2401::Address](#address)
-- [gbj_ds2401::Serial](#serial)
+- [gbj_ds2401::Sernum](#Sernum)
 
 
 ##### Main functions
@@ -65,7 +65,7 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 ##### Utilities
 
 - [cpyAddress()](#cpyAddress)
-- [cpySerial()](#cpySerial)
+- [cpySernum()](#cpySernum)
 - [getLastResult()](#getLastResult)
 - [isError()](#isResult)
 - [isSuccess()](#isResult)
@@ -82,7 +82,7 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 #### Getters
 
 - [cpyAddress()](#cpyAddress)
-- [cpySerial()](#cpySerial)
+- [cpySernum()](#cpySernum)
 - [getFamilyCode()](#getFamilyCode)
 - [getId()](#getId)
 - [getLastResult()](#getLastResult)
@@ -110,17 +110,17 @@ gbj_ds2401::Address address = {0x01, 0xA7, 0x62, 0x44, 0x16, 0x00, 0x00, 0x03};
 [Back to interface](#interface)
 
 
-<a id="serial"></a>
-## Serial
+<a id="Sernum"></a>
+## Sernum
 
 #### Description
 Custom data type determining the byte array for device hardware serial number.
 - It is an inner part of the device ROM without the first family code byte and the last CRC byte.
-- The size of the address text is determined by the constant [gbj\_ds2401::SERIAL\_LEN](#params).
+- The size of the address text is determined by the constant [gbj\_ds2401::SERNUM\_LEN](#params).
 - The device's serial might be considered as a <abbr title="Media Access Control">MAC</abbr> address of it.
 
 #### Syntax
-    gbj_ds2401::Serial serial
+    gbj_ds2401::Sernum sernum
 
 #### See also
 [Address](#Address)
@@ -393,34 +393,34 @@ void setup()
 [Back to interface](#interface)
 
 
-<a id="cpySerial"></a>
-## cpySerial()
+<a id="cpySernum"></a>
+## cpySernum()
 
 #### Description
 The method copies the current cache of the scratchpad into a provided input byte array.
 
 #### Syntax
-    void cpySerial(gbj_ds2401::Serial serial)
+    void cpySernum(gbj_ds2401::Sernum sernum)
 
 #### Parameters
-- **serial**: Array variable for receiving device serial number as a part of ROM.
+- **sernum**: Array variable for receiving device serial number as a part of ROM.
 
 #### Returns
 Populated input array with device serial number.
 
 #### Example
 ```cpp
-gbj_ds2401::Serial serial;
+gbj_ds2401::Sernum sernum;
 void setup()
 {
   while (ds.isSuccess(ds.SSNs()))
   {
-    ds.cpySerial(serial);
+    ds.cpySernum(sernum);
   }
 }
 ```
 
 #### See also
-[Serial](#serial)
+[Sernum](#Sernum)
 
 [Back to interface](#interface)

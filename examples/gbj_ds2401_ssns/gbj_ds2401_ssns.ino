@@ -1,9 +1,9 @@
 /*
   NAME:
-  List DS2401 silicon serial numbers on the one-wire bus.
+  List DS2401 silicon sernum numbers on the one-wire bus.
 
   DESCRIPTION:
-  The sketch identifies all active silicon serial numbers on the one-wire bus
+  The sketch identifies all active silicon sernum numbers on the one-wire bus
   and lists parameters for each of them.
 
   LICENSE:
@@ -21,7 +21,7 @@ const unsigned char PIN_DS2401 = 4; // Pin for one-wire bus
 
 gbj_ds2401 ds = gbj_ds2401(PIN_DS2401);
 gbj_ds2401::Address address;
-gbj_ds2401::Serial serial;
+gbj_ds2401::Sernum sernum;
 char buffer[50];
 
 String textAddress(gbj_ds2401::Address address)
@@ -38,15 +38,15 @@ String textAddress(gbj_ds2401::Address address)
   return text;
 }
 
-String textSerial(gbj_ds2401::Serial serial)
+String textSernum(gbj_ds2401::Sernum sernum)
 {
   String text = "";
   char data[3];
-  for (byte i = 0; i < gbj_ds2401::SERIAL_LEN; i++)
+  for (byte i = 0; i < gbj_ds2401::SERNUM_LEN; i++)
   {
     if (i)
       text += ":";
-    sprintf(data, "%02X", serial[i]);
+    sprintf(data, "%02X", sernum[i]);
     text += data;
   }
   return text;
@@ -92,10 +92,10 @@ void setup()
   while (ds.isSuccess(ds.SSNs()))
   {
     ds.cpyAddress(address);
-    ds.cpySerial(serial);
+    ds.cpySernum(sernum);
     Serial.println(String(++deviceNum) + ". Id: " + String(ds.getId()));
     Serial.println("Address: " + String(textAddress(address)));
-    Serial.println("Serial: " + String(textSerial(serial)));
+    Serial.println("Sernum: " + String(textSernum(sernum)));
     Serial.println("---");
   }
   errorHandler();

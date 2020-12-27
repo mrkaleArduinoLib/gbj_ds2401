@@ -13,7 +13,7 @@ gbj_ds2401::Serial KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 cpyAddress	KEYWORD2
-cpySerial	KEYWORD2
+cpySernum	KEYWORD2
 getFamilyCode	KEYWORD2
 getId	KEYWORD2
 getLastResult	KEYWORD2

@@ -54,11 +54,11 @@ public:
   enum Params : uint8_t
   {
     ADDRESS_LEN = 8,
-    SERIAL_LEN = 6,
+    SERNUM_LEN = 6,
   };
 
   typedef uint8_t Address[Params::ADDRESS_LEN];
-  typedef uint8_t Serial[Params::SERIAL_LEN];
+  typedef uint8_t Sernum[Params::SERNUM_LEN];
 
   /*
     Constructor
@@ -140,9 +140,9 @@ public:
   {
     memcpy(address, _rom.buffer, Params::ADDRESS_LEN);
   }
-  inline void cpySerial(Serial serial)
+  inline void cpySernum(Sernum sernum)
   {
-    memcpy(serial, _rom.address.serial, Params::SERIAL_LEN);
+    memcpy(sernum, _rom.address.sernum, Params::SERNUM_LEN);
   }
 
 private:
@@ -166,7 +166,7 @@ private:
     struct Address
     {
       uint8_t family;
-      uint8_t serial[6];
+      uint8_t sernum[6];
       uint8_t crc;
     } address;
   } _rom;
