@@ -6,10 +6,10 @@ gbj_ds2401::ResultCodes gbj_ds2401::devices()
   setLastResult();
   // Count all devices on the bus
   _bus.SSNs = 0;
-  target_search(Limits::DS2401);
   while (search(_rom.buffer))
   {
-    if (_rom.address.crc == crc8(_rom.buffer, Params::ADDRESS_LEN - 1))
+    if (getFamilyCode() == Limits::DS2401 &&
+        _rom.address.crc == crc8(_rom.buffer, Params::ADDRESS_LEN - 1))
     {
       _bus.SSNs++;
     }

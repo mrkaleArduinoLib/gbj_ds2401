@@ -74,7 +74,7 @@ public:
 
     RETURN:  object
   */
-  gbj_ds2401(uint8_t pinBus)
+  explicit gbj_ds2401(uint8_t pinBus)
     : OneWire(pinBus)
   {
     _bus.pinBus = pinBus;
