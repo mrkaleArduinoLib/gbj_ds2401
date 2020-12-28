@@ -17,9 +17,9 @@
 
 #define SKETCH "GBJ_DS2401_PRESENT 1.1.0"
 
-const unsigned char PIN_DS2401 = 4; // Pin for one-wire bus
+const unsigned char PIN_ONEWIRE = 4; // Pin for one-wire bus
 
-gbj_ds2401 ds = gbj_ds2401(PIN_DS2401);
+gbj_ds2401 ds = gbj_ds2401(PIN_ONEWIRE);
 gbj_ds2401::Address address = {
   0x01, 0x95, 0x9E, 0x44, 0x16, 0x00, 0x00, 0x07 // Replace with current one
 };

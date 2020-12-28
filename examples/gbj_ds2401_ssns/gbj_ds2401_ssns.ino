@@ -17,9 +17,9 @@
 
 #define SKETCH "GBJ_DS2401_SSNS 1.0.1"
 
-const unsigned char PIN_DS2401 = 4; // Pin for one-wire bus
+const unsigned char PIN_ONEWIRE = 4; // Pin for one-wire bus
 
-gbj_ds2401 ds = gbj_ds2401(PIN_DS2401);
+gbj_ds2401 ds = gbj_ds2401(PIN_ONEWIRE);
 gbj_ds2401::Address address;
 gbj_ds2401::Sernum sernum;
 char buffer[50];
