@@ -22,6 +22,13 @@ Library for Dallas Semiconductor DS2401 one-wire silicone serial number (hereina
 - **inttypes.h**: Integer type conversions. This header file includes the exact-width integer definitions and extends them with additional facilities provided by the implementation.
 
 
+<a id="tests"></a>
+## Unit testing
+
+The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, contains testing files, usually just one, with unit tests of library [gbj_DS2401](#library) executable by [Unity](http://www.throwtheswitch.org/unity) test runner. Each testing file should be placed in an individual test folder of a particular project, usually in the structure `test/<testname>/<testfile>`.
+- **ds2401.cpp**: Test suite providing test cases for all relevant public methods with connected real silicon serial number. Its ROM address should be set in the code of the test file directly.
+
+
 <a id="constants"></a>
 ## Constants
 
