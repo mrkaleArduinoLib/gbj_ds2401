@@ -72,7 +72,7 @@ public:
       - Default value: none
       - Limited range: 0 ~ 255
 
-    RETURN:  object
+    RETURN: object
   */
   explicit gbj_ds2401(uint8_t pinBus)
     : OneWire(pinBus)
@@ -102,7 +102,7 @@ public:
     The method initiates communication with the SSN upon provided address
     on the one-wire bus and checks if it is active (present) or not.
 
-    PARAMETERS: none
+    PARAMETERS:
     address - SSN's address.
       - Data type: array of non-negative integers
       - Default value: none
