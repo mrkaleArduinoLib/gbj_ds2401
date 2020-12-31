@@ -53,6 +53,7 @@ public:
 
   enum Params : uint8_t
   {
+    FAMILY_CODE = 0x01,
     ADDRESS_LEN = 8,
     SERNUM_LEN = 6,
   };
@@ -146,11 +147,6 @@ public:
   }
 
 private:
-  enum Limits : uint8_t
-  {
-    DS2401 = 0x01,
-  };
-
   enum CommandsRom : uint8_t
   {
     SEARCH_ROM = 0xF0,

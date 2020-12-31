@@ -32,23 +32,24 @@ The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, co
 <a id="constants"></a>
 ## Constants
 
-- **gbj\_ds2401::VERSION**: Name and semantic version of the library.
+- **VERSION**: Name and semantic version of the library.
 
 
 <a id="params"></a>
 #### Parameters for buffers
 
-- **gbj\_ds2401::ADDRESS\_LEN**  (`gbj_ds2401::Params::ADDRESS_LEN`): Number of bytes in the device's ROM.
-- **gbj\_ds2401::SERNUM\_LEN** (`gbj_ds2401::Params::SERNUM_LEN`): Number of bytes in the device's serial number.
+- **FAMILY\_CODE**  (`Params::FAMILY_CODE`): Implicit family code 0x01 of the SSN.
+- **ADDRESS\_LEN**  (`Params::ADDRESS_LEN`): Number of bytes in the device's ROM.
+- **SERNUM\_LEN** (`Params::SERNUM_LEN`): Number of bytes in the device's serial number.
 
 
 <a id="results"></a>
 #### Result and error codes
 
-- **gbj\_ds2401::SUCCESS** (`gbj_ds2401::ResultCodes::SUCCESS`): Successful processing of the recent function.
-- **gbj\_ds2401::END\_OF\_LIST** (`gbj_ds2401::ResultCodes::END_OF_LIST`): Last device on the bus has been processed.
-- **gbj\_ds2401::ERROR\_NO\_DEVICE** (`gbj_ds2401::ResultCodes::ERROR_NO_DEVICE`): No device on the one-wire bus detected.
-- **gbj\_ds2401::ERROR\_CRC\_ADDRESS** (`gbj_ds2401::ResultCodes::ERROR_CRC_ADDRESS`): Bad hardware address of a device.
+- **SUCCESS** (`ResultCodes::SUCCESS`): Successful processing of the recent function.
+- **END\_OF\_LIST** (`ResultCodes::END_OF_LIST`): Last device on the bus has been processed.
+- **ERROR\_NO\_DEVICE** (`ResultCodes::ERROR_NO_DEVICE`): No device on the one-wire bus detected.
+- **ERROR\_CRC\_ADDRESS** (`ResultCodes::ERROR_CRC_ADDRESS`): Bad hardware address of a device.
 
 
 <a id="interface"></a>
@@ -104,7 +105,7 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 
 #### Description
 Custom data type determining the byte array for device hardware address (ROM).
-- The size of the address text is determined by the constant [gbj\_ds2401::ADDRESS\_LEN](#params).
+- The size of the address text is determined by the constant [ADDRESS\_LEN](#params).
 
 #### Syntax
     gbj_ds2401::Address address
@@ -123,7 +124,7 @@ gbj_ds2401::Address address = {0x01, 0xA7, 0x62, 0x44, 0x16, 0x00, 0x00, 0x03};
 #### Description
 Custom data type determining the byte array for device hardware serial number.
 - It is an inner part of the device ROM without the first family code byte and the last CRC byte.
-- The size of the address text is determined by the constant [gbj\_ds2401::SERNUM\_LEN](#params).
+- The size of the address text is determined by the constant [SERNUM\_LEN](#params).
 - The device's serial might be considered as a <abbr title="Media Access Control">MAC</abbr> address of it.
 
 #### Syntax
@@ -171,13 +172,13 @@ The method initiates communication with the SSN upon provided address on the one
 #### Parameters
 <a id="prm_address"></a>
 - **address**: Array variable with a device ROM identifying a device.
-  - *Valid values*: array of non-negative integers 0 to 255 with length defined by the constant [gbj\_ds2401::ADDRESS\_LEN](#params)
+  - *Valid values*: array of non-negative integers 0 to 255 with length defined by the constant [ADDRESS\_LEN](#params)
   - *Default value*: none
 
 #### Returns
 Result code from [Result and error codes](#results).
-  - In case of active SSN it is [gbj\_ds2401::SUCCESS](#results).
-  - In case of inactive, unaccessable SSN it is [gbj\_ds2401::ERROR\_NO\_DEVICE](#results).
+  - In case of active SSN it is [SUCCESS](#results).
+  - In case of inactive, unaccessable SSN it is [ERROR\_NO\_DEVICE](#results).
 
 [Back to interface](#interface)
 
@@ -301,7 +302,7 @@ Number of DS2401 SSNs on the one-wire bus.
 
 #### Description
 The method sets or initializes the internal status of recent processing on the one-wire bus to input value.
-- Without input parameter the method initializes internal status to success result code with class constant [gbj\_ds2401::SUCCESS](#results).
+- Without input parameter the method initializes internal status to success result code with class constant [SUCCESS](#results).
 - The method without input parameter is usually called right before any operation on the bus in order to reset the internal status or in methods without bus communication.
 
 #### Syntax
@@ -312,7 +313,7 @@ The method sets or initializes the internal status of recent processing on the o
 <a id="prm_result"></a>
 - **result**: Desired result code that should be set as a recent result code.
   - *Valid values*: Some of [Result or error codes](#results).
-  - *Default value*: [gbj\_ds2401::SUCCESS](#results)
+  - *Default value*: [SUCCESS](#results)
 
 #### Returns
 New (actual) result code of recent operation from [Result and error codes](#results).

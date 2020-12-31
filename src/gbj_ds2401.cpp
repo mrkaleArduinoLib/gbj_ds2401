@@ -8,7 +8,7 @@ gbj_ds2401::ResultCodes gbj_ds2401::devices()
   _bus.SSNs = 0;
   while (search(_rom.buffer))
   {
-    if (getFamilyCode() == Limits::DS2401 &&
+    if (getFamilyCode() == Params::FAMILY_CODE &&
         _rom.address.crc == crc8(_rom.buffer, Params::ADDRESS_LEN - 1))
     {
       _bus.SSNs++;
@@ -25,7 +25,7 @@ gbj_ds2401::ResultCodes gbj_ds2401::SSNs()
   static uint8_t iterations;
   while (search(_rom.buffer))
   {
-    if (getFamilyCode() != Limits::DS2401)
+    if (getFamilyCode() != Params::FAMILY_CODE)
       continue;
     iterations++;
     return getLastResult();
@@ -46,7 +46,7 @@ gbj_ds2401::ResultCodes gbj_ds2401::SSNs()
 gbj_ds2401::ResultCodes gbj_ds2401::present(const Address address)
 {
   bool isPresent = false;
-  target_search(Limits::DS2401);
+  target_search(Params::FAMILY_CODE);
   while (search(_rom.buffer))
   {
     if (_rom.address.crc == crc8(_rom.buffer, Params::ADDRESS_LEN - 1) &&
