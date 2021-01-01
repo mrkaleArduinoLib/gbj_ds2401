@@ -54,7 +54,9 @@ The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, co
 
 <a id="interface"></a>
 ## Interface
-It is possible to use functions from the parent library [OneWire](#dependency), which is extended by the [gbj_DS2401](#library).
+
+- It is possible to use functions from the parent library [OneWire](#dependency), which is extended by the [gbj_DS2401](#library).
+- The methods in bold return [result or error codes](#results).
 
 
 ##### Custom data types
@@ -66,24 +68,24 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 ##### Main functions
 
 - [gbj_ds2401()](#constructor)
-- [present()](#present)
-- [SSNs()](#SSNs)
+- [**present()**](#present)
+- [**SSNs()**](#SSNs)
 
 
 ##### Utilities
 
 - [cpyAddress()](#cpyAddress)
 - [cpySernum()](#cpySernum)
-- [getLastResult()](#getLastResult)
+- [**getLastResult()**](#getLastResult)
 - [isError()](#isResult)
 - [isSuccess()](#isResult)
-- [setLastResult()](#setLastResult)
+- [**setLastResult()**](#setLastResult)
 
 
 <a id="setters"></a>
 #### Setters
 
-- [setLastResult()](#setLastResult)
+- [**setLastResult()**](#setLastResult)
 
 
 <a id="getters"></a>
@@ -93,7 +95,7 @@ It is possible to use functions from the parent library [OneWire](#dependency), 
 - [cpySernum()](#cpySernum)
 - [getFamilyCode()](#getFamilyCode)
 - [getId()](#getId)
-- [getLastResult()](#getLastResult)
+- [**getLastResult()**](#getLastResult)
 - [getPin()](#getPin)
 - [getSSNs()](#getSSNs)
 - [isError()](#isResult)
@@ -345,11 +347,11 @@ Result code of the recent processing from [Result and error codes](#results).
 [Back to interface](#interface)
 
 
-<a id="isSuccess"></a>
+<a id="isResult"></a>
 ## isSuccess(), isError()
 
 #### Description
-The method returns a logical flag whether the recent operation on the one-wire bus was successful or failed respectivelly.
+The method returns a logical flag whether the recent operation was successful or failed respectivelly.
 - The corresponding result code can be obtained by the method [getLastResult()]((#getLastResult).
 
 #### Syntax
@@ -360,7 +362,7 @@ The method returns a logical flag whether the recent operation on the one-wire b
 None
 
 #### Returns
-Flag about successful or failed processing of the recent operation on the bus.
+Flag about successful or failed processing of the recent operation.
 
 #### See also
 [getLastResult()](#getLastResult)
