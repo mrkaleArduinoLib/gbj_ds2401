@@ -137,6 +137,7 @@ public:
   inline uint8_t getSSNs() { return _bus.SSNs; }
   inline uint8_t getFamilyCode() { return _rom.address.family; }
   inline uint8_t getId() { return _rom.address.crc; }
+  inline uint8_t *getAddressRef() { return _rom.buffer; }
   inline void cpyAddress(Address address)
   {
     memcpy(address, _rom.buffer, Params::ADDRESS_LEN);

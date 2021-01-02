@@ -93,6 +93,7 @@ The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, co
 
 - [cpyAddress()](#cpyAddress)
 - [cpySernum()](#cpySernum)
+- [getAddressRef()](#getPointer)
 - [getFamilyCode()](#getFamilyCode)
 - [getId()](#getId)
 - [**getLastResult()**](#getLastResult)
@@ -370,6 +371,29 @@ Flag about successful or failed processing of the recent operation.
 [Back to interface](#interface)
 
 
+<a id="getPointer"></a>
+## getAddressRef()
+
+#### Description
+The method returns pointer to the internal ROM address of a selected SSN.
+- Method is useful when just reading is used and there is no need to copy
+  that memory array to a separate array variable in a sketch.
+
+#### Syntax
+    uint8_t *getAddressRef()
+
+#### Parameters
+None
+
+#### Returns
+Pointer to a byte array memory inside the library instance object.
+
+#### See also
+[cpyAddress()](#cpyAddress)
+
+[Back to interface](#interface)
+
+
 <a id="cpyAddress"></a>
 ## cpyAddress()
 
@@ -399,6 +423,8 @@ void setup()
 
 #### See also
 [Address](#address)
+
+[getAddressRef()](#getPointer)
 
 [Back to interface](#interface)
 

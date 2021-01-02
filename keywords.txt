@@ -14,6 +14,7 @@ Serial KEYWORD1
 #######################################
 cpyAddress	KEYWORD2
 cpySernum	KEYWORD2
+getAddressRef	KEYWORD2
 getFamilyCode	KEYWORD2
 getId	KEYWORD2
 getLastResult	KEYWORD2
