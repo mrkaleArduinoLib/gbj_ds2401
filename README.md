@@ -1,106 +1,106 @@
 <a id="library"></a>
-# gbj_DS2401
+# gbj_ds2401
 Library for Dallas Semiconductor DS2401 one-wire silicone serial number (hereinafter referred to as "SSN").
-- Library utilizes a detailed error handling.
-- Library provides a _device identifier_ taken from last byte (<abbr title="Cyclic Redundancy Code">CRC</abbr>) of a device's hardware <abbr title="Read Only Memory">ROM</abbr>.
-- Library is primarily aimed for working with all SSNs on the one-wire bus in a loop, so that they need not to be identified by an address in advance. Thus, all getters and setters are valid for currently selected device in a loop.
+
+* Library utilizes a detailed error handling.
+* Library provides a _device identifier_ taken from last byte (<abbr title="Cyclic Redundancy Code">CRC</abbr>) of a device's hardware <abbr title="Read Only Memory">ROM</abbr>.
+* Library is primarily aimed for working with all SSNs on the one-wire bus in a loop, so that they need not to be identified by an address in advance. Thus, all getters and setters are valid for currently selected device in a loop.
 
 <a id="dependency"></a>
 ## Dependency
 
-- **OneWire**: Library for communication on one-wire library #1 in PlatformIO Library Manager available at [https://platformio.org/lib/show/1/OneWire](https://platformio.org/lib/show/1/OneWire).
+* **OneWire**: Library for communication on one-wire library #1 in PlatformIO Library Manager available at [https://platformio.org/lib/show/1/OneWire](https://platformio.org/lib/show/1/OneWire).
 
 #### Particle platform
-- **Particle.h**: Includes alternative (C++) data type definitions.
+* **Particle.h**: Includes alternative (C++) data type definitions.
 
 #### ESP32/ESP8266 platform
-- **Arduino.h**: Main include file for the Espressif platform.
+* **Arduino.h**: Main include file for the Espressif platform.
 
 #### Arduino platform
-- **Arduino.h**: Main include file for the Arduino SDK version greater or equal to 100.
-- **WProgram.h**: Main include file for the Arduino SDK version less than 100.
-- **inttypes.h**: Integer type conversions. This header file includes the exact-width integer definitions and extends them with additional facilities provided by the implementation.
+* **Arduino.h**: Main include file for the Arduino SDK version greater or equal to 100.
+* **inttypes.h**: Integer type conversions. This header file includes the exact-width integer definitions and extends them with additional facilities provided by the implementation.
 
 
 <a id="tests"></a>
 ## Unit testing
 
-The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, contains testing files, usually just one, with unit tests of library [gbj_DS2401](#library) executable by [Unity](http://www.throwtheswitch.org/unity) test runner. Each testing file should be placed in an individual test folder of a particular project, usually in the structure `test/<testname>/<testfile>`.
-- **ds2401.cpp**: Test suite providing test cases for all relevant public methods with connected real silicon serial number. Its ROM address should be set in the code of the test file directly.
+The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, contains testing files, usually just one, with unit tests of library [gbj_ds2401](#library) executable by [Unity](http://www.throwtheswitch.org/unity) test runner. Each testing file should be placed in an individual test folder of a particular project, usually in the structure `test/<testname>/<testfile>`.
+* **ds2401.cpp**: Test suite providing test cases for all relevant public methods with connected real silicon serial number. Its ROM address should be set in the code of the test file directly.
 
 
 <a id="constants"></a>
 ## Constants
 
-- **VERSION**: Name and semantic version of the library.
+* **VERSION**: Name and semantic version of the library.
 
 
 <a id="params"></a>
 #### Parameters for buffers
 
-- **FAMILY\_CODE**  (`Params::FAMILY_CODE`): Implicit family code 0x01 of the SSN.
-- **ADDRESS\_LEN**  (`Params::ADDRESS_LEN`): Number of bytes in the device's ROM.
-- **SERNUM\_LEN** (`Params::SERNUM_LEN`): Number of bytes in the device's serial number.
+* **FAMILY\_CODE**  (`Params::FAMILY_CODE`): Implicit family code 0x01 of the SSN.
+* **ADDRESS\_LEN**  (`Params::ADDRESS_LEN`): Number of bytes in the device's ROM.
+* **SERNUM\_LEN** (`Params::SERNUM_LEN`): Number of bytes in the device's serial number.
 
 
 <a id="results"></a>
 #### Result and error codes
 
-- **SUCCESS** (`ResultCodes::SUCCESS`): Successful processing of the recent function.
-- **END\_OF\_LIST** (`ResultCodes::END_OF_LIST`): Last device on the bus has been processed.
-- **ERROR\_NO\_DEVICE** (`ResultCodes::ERROR_NO_DEVICE`): No device on the one-wire bus detected.
-- **ERROR\_CRC\_ADDRESS** (`ResultCodes::ERROR_CRC_ADDRESS`): Bad hardware address of a device.
+* **SUCCESS** (`ResultCodes::SUCCESS`): Successful processing of the recent function.
+* **END\_OF\_LIST** (`ResultCodes::END_OF_LIST`): Last device on the bus has been processed.
+* **ERROR\_NO\_DEVICE** (`ResultCodes::ERROR_NO_DEVICE`): No device on the one-wire bus detected.
+* **ERROR\_CRC\_ADDRESS** (`ResultCodes::ERROR_CRC_ADDRESS`): Bad hardware address of a device.
 
 
 <a id="interface"></a>
 ## Interface
 
-- It is possible to use functions from the parent library [OneWire](#dependency), which is extended by the [gbj_DS2401](#library).
-- The methods in bold return [result or error codes](#results).
+* It is possible to use functions from the parent library [OneWire](#dependency), which is extended by the [gbj_ds2401](#library).
+* The methods in bold return [result or error codes](#results).
 
 
 ##### Custom data types
 
-- [gbj_ds2401::Address](#address)
-- [gbj_ds2401::Sernum](#Sernum)
+* [gbj_ds2401::Address](#address)
+* [gbj_ds2401::Sernum](#Sernum)
 
 
 ##### Main functions
 
-- [gbj_ds2401()](#constructor)
-- [**present()**](#present)
-- [**SSNs()**](#SSNs)
+* [gbj_ds2401()](#constructor)
+* [**present()**](#present)
+* [**SSNs()**](#SSNs)
 
 
 ##### Utilities
 
-- [cpyAddress()](#cpyAddress)
-- [cpySernum()](#cpySernum)
-- [**getLastResult()**](#getLastResult)
-- [isError()](#isResult)
-- [isSuccess()](#isResult)
-- [**setLastResult()**](#setLastResult)
+* [cpyAddress()](#cpyAddress)
+* [cpySernum()](#cpySernum)
+* [**getLastResult()**](#getLastResult)
+* [isError()](#isResult)
+* [isSuccess()](#isResult)
+* [**setLastResult()**](#setLastResult)
 
 
 <a id="setters"></a>
 #### Setters
 
-- [**setLastResult()**](#setLastResult)
+* [**setLastResult()**](#setLastResult)
 
 
 <a id="getters"></a>
 #### Getters
 
-- [cpyAddress()](#cpyAddress)
-- [cpySernum()](#cpySernum)
-- [getAddressRef()](#getPointer)
-- [getFamilyCode()](#getFamilyCode)
-- [getId()](#getId)
-- [**getLastResult()**](#getLastResult)
-- [getPin()](#getPin)
-- [getSSNs()](#getSSNs)
-- [isError()](#isResult)
-- [isSuccess()](#isResult)
+* [cpyAddress()](#cpyAddress)
+* [cpySernum()](#cpySernum)
+* [getAddressRef()](#getPointer)
+* [getFamilyCode()](#getFamilyCode)
+* [getId()](#getId)
+* [**getLastResult()**](#getLastResult)
+* [getPin()](#getPin)
+* [getSSNs()](#getSSNs)
+* [isError()](#isResult)
+* [isSuccess()](#isResult)
 
 
 <a id="address"></a>
@@ -108,7 +108,8 @@ The subfolder `tests` in the folder `extras`, i.e., `gbj_ds2401/extras/test`, co
 
 #### Description
 Custom data type determining the byte array for device hardware address (ROM).
-- The size of the address text is determined by the constant [ADDRESS\_LEN](#params).
+
+* The size of the address text is determined by the constant [ADDRESS\_LEN](#params).
 
 #### Syntax
     gbj_ds2401::Address address
@@ -126,9 +127,10 @@ gbj_ds2401::Address address = {0x01, 0xA7, 0x62, 0x44, 0x16, 0x00, 0x00, 0x03};
 
 #### Description
 Custom data type determining the byte array for device hardware serial number.
-- It is an inner part of the device ROM without the first family code byte and the last CRC byte.
-- The size of the address text is determined by the constant [SERNUM\_LEN](#params).
-- The device's serial might be considered as a <abbr title="Media Access Control">MAC</abbr> address of it.
+
+* It is an inner part of the device ROM without the first family code byte and the last CRC byte.
+* The size of the address text is determined by the constant [SERNUM\_LEN](#params).
+* The device's serial might be considered as a <abbr title="Media Access Control">MAC</abbr> address of it.
 
 #### Syntax
     gbj_ds2401::Sernum sernum
@@ -144,18 +146,19 @@ Custom data type determining the byte array for device hardware serial number.
 
 #### Description
 Constructor creates the class instance object.
-- Constructor resets the one-wire bus.
-- Constructor counts all SSNs on the bus.
-- The result is available by the getter [getSSNs()](#getSSNs).
+
+* Constructor resets the one-wire bus.
+* Constructor counts all SSNs on the bus.
+* The result is available by the getter [getSSNs()](#getSSNs).
 
 #### Syntax
     gbj_ds2401(uint8_t pinBus)
 
 #### Parameters
 <a id="prm_pinBus"></a>
-- **pinBus**: Number of GPIO pin of the microcontroller managing one-wire bus.
-  - *Valid values*: non-negative integer 0 to 255
-  - *Default value*: none
+* **pinBus**: Number of GPIO pin of the microcontroller managing one-wire bus.
+  * *Valid values*: non-negative integer 0 to 255
+  * *Default value*: none
 
 #### Returns
 Object controlling the SSN.
@@ -174,14 +177,15 @@ The method initiates communication with the SSN upon provided address on the one
 
 #### Parameters
 <a id="prm_address"></a>
-- **address**: Array variable with a device ROM identifying a device.
-  - *Valid values*: array of non-negative integers 0 to 255 with length defined by the constant [ADDRESS\_LEN](#params)
-  - *Default value*: none
+* **address**: Array variable with a device ROM identifying a device.
+  * *Valid values*: array of non-negative integers 0 to 255 with length defined by the constant [ADDRESS\_LEN](#params)
+  * *Default value*: none
 
 #### Returns
 Result code from [Result and error codes](#results).
-  - In case of active SSN it is [SUCCESS](#results).
-  - In case of inactive, unaccessable SSN it is [ERROR\_NO\_DEVICE](#results).
+
+  * In case of active SSN it is [SUCCESS](#results).
+  * In case of inactive, unaccessable SSN it is [ERROR\_NO\_DEVICE](#results).
 
 [Back to interface](#interface)
 
@@ -191,8 +195,9 @@ Result code from [Result and error codes](#results).
 
 #### Description
 The method selects devices with DS2401 family code and are active on the one-wire bus one by one for further processing by getters and setters.
-- The method returns success result code until there is an active device on the bus.
-- After selecting the last device the method resets searching process.
+
+* The method returns success result code until there is an active device on the bus.
+* After selecting the last device the method resets searching process.
 
 #### Syntax
     gbj_ds2401::ResultCodes SSNs()
@@ -265,7 +270,8 @@ Short device identifier unique for all devices on the one-wire bus.
 
 #### Description
 The method returns number of microcontroller pin mastering the one-wire bus.
-- It is the [pinBus](#prm_pinBus) parameter of the [constructor](#constructor).
+
+* It is the [pinBus](#prm_pinBus) parameter of the [constructor](#constructor).
 
 #### Syntax
     uint8_t getPin()
@@ -305,8 +311,9 @@ Number of DS2401 SSNs on the one-wire bus.
 
 #### Description
 The method sets or initializes the internal status of recent processing on the one-wire bus to input value.
-- Without input parameter the method initializes internal status to success result code with class constant [SUCCESS](#results).
-- The method without input parameter is usually called right before any operation on the bus in order to reset the internal status or in methods without bus communication.
+
+* Without input parameter the method initializes internal status to success result code with class constant [SUCCESS](#results).
+* The method without input parameter is usually called right before any operation on the bus in order to reset the internal status or in methods without bus communication.
 
 #### Syntax
     gbj_ds2401::ResultCodes setLastResult()
@@ -314,9 +321,9 @@ The method sets or initializes the internal status of recent processing on the o
 
 #### Parameters
 <a id="prm_result"></a>
-- **result**: Desired result code that should be set as a recent result code.
-  - *Valid values*: Some of [Result or error codes](#results).
-  - *Default value*: [SUCCESS](#results)
+* **result**: Desired result code that should be set as a recent result code.
+  * *Valid values*: Some of [Result or error codes](#results).
+  * *Default value*: [SUCCESS](#results)
 
 #### Returns
 New (actual) result code of recent operation from [Result and error codes](#results).
@@ -353,7 +360,8 @@ Result code of the recent processing from [Result and error codes](#results).
 
 #### Description
 The method returns a logical flag whether the recent operation was successful or failed respectivelly.
-- The corresponding result code can be obtained by the method [getLastResult()]((#getLastResult).
+
+* The corresponding result code can be obtained by the method [getLastResult()]((#getLastResult).
 
 #### Syntax
     bool isSuccess()
@@ -376,7 +384,8 @@ Flag about successful or failed processing of the recent operation.
 
 #### Description
 The method returns pointer to the internal ROM address of a selected SSN.
-- Method is useful when just reading is used and there is no need to copy
+
+* Method is useful when just reading is used and there is no need to copy
   that memory array to a separate array variable in a sketch.
 
 #### Syntax
@@ -404,7 +413,7 @@ The method copies the ROM into a provided input byte array.
     void cpyAddress(gbj_ds2401::Address address)
 
 #### Parameters
-- **address**: Array variable for receiving device ROM.
+* **address**: Array variable for receiving device ROM.
 
 #### Returns
 Populated input array with device ROM.
@@ -439,7 +448,7 @@ The method copies the current cache of the scratchpad into a provided input byte
     void cpySernum(gbj_ds2401::Sernum sernum)
 
 #### Parameters
-- **sernum**: Array variable for receiving device serial number as a part of ROM.
+* **sernum**: Array variable for receiving device serial number as a part of ROM.
 
 #### Returns
 Populated input array with device serial number.

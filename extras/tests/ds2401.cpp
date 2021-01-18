@@ -1,6 +1,6 @@
 /*
   NAME:
-  Unit tests of library "gbj_DS2401" with connected real device.
+  Unit tests of library "gbj_ds2401" with connected real device.
 
   DESCRIPTION:
   The test suite provides test cases for all relevant public methods.
@@ -13,9 +13,9 @@
   CREDENTIALS:
   Author: Libor Gabaj
 */
+#include "gbj_ds2401.h"
 #include <Arduino.h>
 #include <unity.h>
-#include <gbj_ds2401.h>
 
 // Basic setup
 const unsigned char PIN_ONEWIRE = 4; // Pin for one-wire bus
@@ -60,20 +60,21 @@ void test_device_pin(void)
   TEST_ASSERT_EQUAL_UINT8(PIN_ONEWIRE, ds.getPin());
 }
 
-void setup() {
-    UNITY_BEGIN();
+void setup()
+{
+  UNITY_BEGIN();
 
-    RUN_TEST(test_setup_familycode);
-    RUN_TEST(test_setup_crc);
+  RUN_TEST(test_setup_familycode);
+  RUN_TEST(test_setup_crc);
 
-    RUN_TEST(test_bus_ssns);
+  RUN_TEST(test_bus_ssns);
 
-    RUN_TEST(test_device_present);
-    RUN_TEST(test_device_familycode);
-    RUN_TEST(test_device_id);
-    RUN_TEST(test_device_pin);
+  RUN_TEST(test_device_present);
+  RUN_TEST(test_device_familycode);
+  RUN_TEST(test_device_id);
+  RUN_TEST(test_device_pin);
 
-    UNITY_END();
+  UNITY_END();
 }
 
-void loop(){}
+void loop() {}
